@@ -202,7 +202,7 @@ size_t
 buffer_coalesce(struct Buffer *buffer, const void **dst) {
     size_t buffer_tail = (buffer->head + buffer->len) % buffer->size;
 
-    if (buffer_tail <= buffer->head) {
+    if (buffer_tail >= buffer->head) {
         /* buffer not wrapped */
         if (dst != NULL)
             *dst = &buffer->buffer[buffer->head];
